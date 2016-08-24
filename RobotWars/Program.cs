@@ -14,9 +14,9 @@ namespace RobotWars
                 new Robot(0, 2, "E"),
                 new Arena(4, 4)
                 );
-
-            
-            var location = robotOperator.executeInstructions("MLMRMMMRMMRR");
+                        
+            var location = robotOperator.ExecuteInstructions("MLMRMMMRMMRR");
+            var penalties = robotOperator.ReportPenalties();
         }
     }
 }

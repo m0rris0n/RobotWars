@@ -8,13 +8,13 @@ namespace RobotWars
 {
     public class RobotOperator
     {
-        Robot Robot { get; set; }
-        Arena Arena { get; set; }
+        Robot _robot;
+        Arena _arena;
 
         public RobotOperator(Robot robot, Arena arena)
         {
-            Robot = robot;
-            Arena = arena;
+            _robot = robot;
+            _arena = arena;
         }
 
         /// <summary>
@@ -25,35 +25,35 @@ namespace RobotWars
         /// </summary>
         /// <returns>The method returns a bool value denoting whether the robot has been 
         /// able to move (true) or has collided with the edge (false).</returns>
-        bool move()
+        public bool Move()
         {
-            switch (Robot.Heading)
+            switch (_robot.Heading)
             {
                 case "N":
-                    if (Robot.Y < Arena.MaxY)
+                    if (_robot.Y < _arena.MaxY)
                     {
-                        Robot.Y++;
+                        _robot.Y++;
                         return true;
                     }
                     return false;
                 case "E":
-                    if (Robot.X < Arena.MaxX)
+                    if (_robot.X < _arena.MaxX)
                     {
-                        Robot.X++;
+                        _robot.X++;
                         return true;
                     }
                     return false;
                 case "S":
-                    if (Robot.Y > 0)
+                    if (_robot.Y > 0)
                     {
-                        Robot.Y--;
+                        _robot.Y--;
                         return true;
                     }
                     return false;
                 case "W":
-                    if (Robot.X > 0)
+                    if (_robot.X > 0)
                     {
-                        Robot.X--;
+                        _robot.X--;
                         return true;
                     }
                     return false;
@@ -67,23 +67,23 @@ namespace RobotWars
         /// Will read L or R from the direction parameter and then change the heading accordingly
         /// </summary>
         /// <param name="direction">"L" or "R" is expected</param>
-        void rotate(string direction)
+        public void Rotate(string direction)
         {
             if (direction == "L")
             {
-                switch (Robot.Heading)
+                switch (_robot.Heading)
                 {
                     case "N":
-                        Robot.Heading = "W";
+                        _robot.Heading = "W";
                         break;
                     case "W":
-                        Robot.Heading = "S";
+                        _robot.Heading = "S";
                         break;
                     case "S":
-                        Robot.Heading = "E";
+                        _robot.Heading = "E";
                         break;
                     case "E":
-                        Robot.Heading = "N";
+                        _robot.Heading = "N";
                         break;
                     default:
                         break;
@@ -91,19 +91,19 @@ namespace RobotWars
             }
             else if (direction == "R")
             {
-                switch (Robot.Heading)
+                switch (_robot.Heading)
                 {
                     case "N":
-                        Robot.Heading = "E";
+                        _robot.Heading = "E";
                         break;
                     case "W":
-                        Robot.Heading = "N";
+                        _robot.Heading = "N";
                         break;
                     case "S":
-                        Robot.Heading = "W";
+                        _robot.Heading = "W";
                         break;
                     case "E":
-                        Robot.Heading = "S";
+                        _robot.Heading = "S";
                         break;
                     default:
                         break;
@@ -120,30 +120,30 @@ namespace RobotWars
         /// direction as the parameter.
         /// </summary>
         /// <param name="instructions">the M/L/R combo string for the robot's movement</param>
-        public string executeInstructions(string instructions)
+        public string ExecuteInstructions(string instructions)
         {
             foreach (char c in instructions)
             {
 
                 if (c.ToString() == "M")
                 {
-                    if (move() == false)
+                    if (Move() == false)
                     {
-                        Robot.Penalties++;
+                        _robot.Penalties++;
                     }
                 }
                 else
                 {
-                    rotate(c.ToString());
+                    Rotate(c.ToString());
                 }
             }
-            return Robot.ReportLocation();
+            return _robot.ReportLocation();
         }
 
         //Returns the penalities variable from within the local Robot object
-        public int reportPenalties()
+        public int ReportPenalties()
         {
-            return Robot.Penalties;
+            return _robot.Penalties;
         }
 
 

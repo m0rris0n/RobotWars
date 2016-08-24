@@ -24,11 +24,12 @@ namespace RobotWars.Test
                 );
 
             //Act
-            var location = robotOperator.executeInstructions("MLMRMMMRMMRR");
+            var location = robotOperator.ExecuteInstructions("MLMRMMMRMMRR");
+            var penalties = robotOperator.ReportPenalties();
 
             //Assert
             Assert.AreEqual(location, "4,1,N");
-            Assert.AreEqual(0, robotOperator.reportPenalties());
+            Assert.AreEqual(0, penalties);
 
         }
 
@@ -42,11 +43,12 @@ namespace RobotWars.Test
                 );
 
             //Act
-            var location = robotOperator.executeInstructions("LMLLMMLMMMRMM");
+            var location = robotOperator.ExecuteInstructions("LMLLMMLMMMRMM");
+            var penalties = robotOperator.ReportPenalties();
 
             //Assert
             Assert.AreEqual(location, "0,1,W");
-            Assert.AreEqual(1, robotOperator.reportPenalties());
+            Assert.AreEqual(1, penalties);
 
         }
 
@@ -60,11 +62,12 @@ namespace RobotWars.Test
                 );
 
             //Act
-            var location = robotOperator.executeInstructions("MLMLMLMRMRMRMRM");
+            var location = robotOperator.ExecuteInstructions("MLMLMLMRMRMRMRM");
+            var penalties = robotOperator.ReportPenalties();
 
             //Assert
             Assert.AreEqual(location, "2,2,N");
-            Assert.AreEqual(0, robotOperator.reportPenalties());
+            Assert.AreEqual(0, penalties);
 
         }
 
@@ -78,11 +81,12 @@ namespace RobotWars.Test
                 );
 
             //Act
-            var location = robotOperator.executeInstructions("MMLMMLMMMMM");
+            var location = robotOperator.ExecuteInstructions("MMLMMLMMMMM");
+            var penalties = robotOperator.ReportPenalties();
 
             //Assert
             Assert.AreEqual(location, "0,0,S");
-            Assert.AreEqual(3, robotOperator.reportPenalties());
+            Assert.AreEqual(3, penalties);
 
         }
     }

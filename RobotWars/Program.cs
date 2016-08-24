@@ -10,6 +10,13 @@ namespace RobotWars
     {
         static void Main(string[] args)
         {
+            RobotOperator robotOperator = new RobotOperator(
+                new Robot(0, 2, "E"),
+                new Arena(4, 4)
+                );
+
+            
+            var location = robotOperator.executeInstructions("MLMRMMMRMMRR");
         }
     }
 }

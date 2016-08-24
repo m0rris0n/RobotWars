@@ -20,11 +20,11 @@ namespace RobotWars
         /// <summary>
         /// Based on the heading variable of the local Robot object, the method checks the 
         /// Robot's relevent coordinates against the boundaries of the arena to detect for 
-        /// collisions. Where there is space, the Robot's appropriate coordinate is 
+        /// collisions. Where there is space to move, the Robot's appropriate coordinate is 
         /// incremented/reduced as appropriate.
         /// </summary>
-        /// <returns>The method returns a bool value denoting whether or not
-        /// the Robot has collided with the edge.</returns>
+        /// <returns>The method returns a bool value denoting whether the robot has been 
+        /// able to move (true) or has collided with the edge (false).</returns>
         bool move()
         {
             switch (Robot.Heading)
